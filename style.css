@@ -1,0 +1,377 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --yellow: #eef13f;
+  --orange: hsl(13, 99%, 60%);
+  --green: rgb(128, 178, 56);
+  --blue: #80c1d6;
+}
+
+html {
+  scroll-behavior: smooth; /*permet au scroll de glisseeeer*/
+}
+
+body {
+  font-family: "Atma", cursive;
+  background-color: var(--blue); /*pour changer la couleur du background*/
+  margin: 0;
+}
+
+h1 {
+  font-size: 10vmin; /*Permet de modifier la taille de la police*/
+  color: var(--orange); /*Modifie la couleur du texte*/
+  text-shadow: 2px 2px 0 white; /*Rajoute une ombre au texte*/
+  letter-spacing: 2px; /*Modifie l'éspacement entre les lettres*/
+}
+
+h2 {
+  font-size: 4rem; /*Permet de modifier la taille de la police*/
+  text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.4); /*Rajoute une ombre au texte*/
+  letter-spacing: 2px; /*Modofie l'éspacement entre les lettres*/
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: "Bangers", cursive; /*Modifie la police*/
+  text-align: center; /*Permet d'aligner le texte au centre*/
+  margin-top: 0rem; /*Modifie la marge extérieur du haut de la box*/
+}
+#damier h2::after {
+  content: "";
+  height: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: block;
+  background-image: linear-gradient(
+      to right,
+      var(--yellow) 50%,
+      transparent 50%
+    ),
+    linear-gradient(to right, var(--yellow) 50%, transparent 50%);
+  background-repeat: repeat-x;
+  background-size: 3rem 1.5rem;
+  background-position: left top, 1.5rem bottom;
+}
+
+footer h2 {
+  font-size: 3rem;
+}
+
+img {
+  max-width: 100%; /*Défini la largeur maximum de l'objet*/
+  height: auto; /*Defini la hauteur de l'objet*/
+} /*Permet a l'image d'être toujours adapté a la taille de l'écran*/
+
+nav ul {
+  display: flex; /*Permet de définir le rendu d'un élément, ici : flex*/
+  justify-content: space-around; /*indique la façon dont l'espace doit être réparti entre, et autour de l'élément*/
+  margin: 0; /*Défini la marge extérieur de l'élément*/
+  padding: 0; /*Défini la marge intérieur de l'élément*/
+}
+
+nav {
+  position: fixed; /*définit la façon dont un élément est positionné dans un document*/
+  background: rgb(128, 178, 56, 0.8); /*Indique la couleur du fond*/
+  color: white; /*Modifie la couleur du texte*/
+  margin-top: 0; /*Defini la marge extérieur du haut de l'élément*/
+  margin-bottom: 2.8rem; /*Défini la marge extérieur du bas de l'élément*/
+  padding: 10px 10px; /*Défini la marge intérieur de l'élément, ici : haut bas / gauche droite*/
+  z-index: 100; /* détermine l'ordre des différentes couches que formeront les éléments (si elles se superposent)*/
+  width: 100%; /*à revoir!!*/ /*Défini la largeur de l'élément*/
+}
+
+nav li {
+  list-style-type: none; /*permet de définir l'apparence de la puce d'un élément de liste, ici "aucun"*/
+  transition: transform 0.6s; /*Propriété raccourcis, voir https://developer.mozilla.org/fr/docs/Web/CSS/transition*/
+}
+
+nav a {
+  text-decoration: none; /*Modifie le texte en ajoutant une ligne pouvant être positionnée sous, sur ou à travers le texte*/
+  color: white; /*Défini la couleur du texte*/
+  display: inline-block; /*Définit le type d'affichage utilisée pour le rendu d'un élément, ici : en ligne, en formant des box */
+  padding: 1rem; /*Marge interne*/
+  text-transform: uppercase; /*Modifie la totalité du texte, ici : majuscule*/
+  letter-spacing: 1.5px; /*Modifie l'éspace entre les lettres*/
+}
+
+nav li:last-child {
+  font-weight: bold; /*Permet de définir la graisse utilisée pour le texte*/
+}
+
+nav li:hover {
+  transform: rotate(10deg) scale(1.5); /*modifie l'espace de coordonnées utilisé pour la mise en forme visuelle*/
+}
+nav li:nth-child(even):hover {
+  transform: rotate(-10deg) scale(1.5);
+}
+
+header {
+  background-image: url(img/blue-splash.png); /*Défini l'image utilisé pour le background de l'élément*/
+  background-position: center center; /*Défini la position du background de l'élément*/
+  background-attachment: fixed; /*Défini la façon dont sera ancré le background dans l'élément*/
+  background-size: cover; /*Défini la taille du background dans l'élément*/
+  background-repeat: no-repeat; /*Défini la façon dont va être répété le background dans l'élément, ici : il ne sera pas répété*/
+  display: flex;
+  flex-direction: column;
+}
+
+header img {
+  max-width: 100%; /*Défini la largeur maximal de l'élément*/
+  height: auto; /*Défini la hauteur maximal de l'élément*/
+  display: block; /*Définit le type d'affichage utilisée pour le rendu d'un élément*/
+  margin: 6rem auto 6rem; /*Défini la marge extérieur de l'élément*/
+}
+/*-----------------MAIN----------------MAIN------------MAIN--------------------*/
+#obstacles {
+  color: white; /*Modofie la couleur du texte*/
+  border-top: 0.6rem solid rgba(0, 0, 0, 0.06);
+  border-bottom: 0.6rem solid rgba(0, 0, 0, 0.06);
+  padding: 4rem 0rem;
+  background-color: var(
+    --orange
+  ); /*Défini la couleur du background de l'élément*/
+}
+
+#obstacles ul {
+  display: grid; /*Définit le type d'affichage utilisée pour le rendu d'un élément*/
+  gap: 1.5rem; /*https://developer.mozilla.org/fr/docs/Web/CSS/gap*/
+  margin-bottom: 6rem;
+}
+
+.grid {
+  margin: auto;
+  max-width: 60rem;
+  width: calc(100% - 3rem);
+}
+
+.grid-obstacles ul {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(15rem, 1fr)
+  ); /*https://developer.mozilla.org/fr/docs/Web/CSS/grid-template-columns*/
+  border-radius: 2.5rem;
+  padding: 0;
+  list-style-type: none;
+}
+
+.grid-obstacles li {
+  background: var(--green);
+  border-radius: 1.5rem;
+  transition: 0.5s;
+  font-weight: bold;
+  padding-bottom: 2rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+}
+
+.grid-obstacles a {
+  color: white;
+  text-decoration: none;
+}
+
+.grid-obstacles li:hover {
+  background: var(--yellow);
+  color: var(--orange);
+}
+
+.grid-obstacles li img {
+  height: auto;
+}
+
+/*-----------------FOOTER----------------FOOTER------------FOOTER--------------------*/
+footer {
+  position: relative; /*Pas toucher pour le KN*/
+  background-color: var(--yellow);
+  border-top: 0.6rem solid rgba(0, 0, 0, 0.06);
+  border-bottom: 0.6rem solid rgba(0, 0, 0, 0.06);
+  padding: 4rem 0;
+}
+
+footer img {
+  position: absolute; /*Définit la façon dont un élément est positionné dans un document, voir : https://developer.mozilla.org/fr/docs/Web/CSS/position*/
+  left: 0;
+  right: 0;
+  top: -4rem;
+  margin: auto;
+}
+
+.grid-adresses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.grid-title {
+  grid-column: 1 / span 2;
+  margin-top: 3rem;
+}
+
+.paragraphe-1,
+.address-1 {
+  text-align: right;
+}
+
+.paragraphe-2,
+.address-2 {
+  text-align: left;
+}
+/*-----------------------------------------------------------------------------------*/
+/*----------------------------------PAGE PRIZES.HTML---------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+.prizes {
+  background-color: var(--green);
+  color: white;
+  padding-bottom: 3rem;
+  padding: 4rem 0rem;
+  border-top: 0.6rem solid rgba(0, 0, 0, 0.06);
+  border-bottom: 0.6rem solid rgba(0, 0, 0, 0.06);
+}
+
+.grid-prizes ul {
+  display: grid; /*Définit le type d'affichage utilisée pour le rendu d'un élément*/
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /*https://developer.mozilla.org/fr/docs/Web/CSS/grid-template-columns*/
+  gap: 1.5rem; /*https://developer.mozilla.org/fr/docs/Web/CSS/gap*/
+  width: calc(100% - 2rem);
+  max-width: 77.5rem;
+  margin: 2rem auto 4rem;
+  padding: 3rem;
+}
+
+.grid-prizes li {
+  display: flex;
+  border: 2px dashed var(--yellow);
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.grid-prizes a {
+  color: white;
+  text-decoration: none;
+}
+
+.grid-prizes li img {
+  height: auto;
+  transition: 1s;
+}
+
+.grid-prizes li img:hover {
+  transition: 1s;
+  transform: rotate(1turn);
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*----------------------------------PAGE APPLY.HTML---------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+
+.apply {
+  background-color: var(--blue);
+  color: white;
+  padding-top: 4rem;
+  border-top: 0.6rem solid rgba(0, 0, 0, 0.06);
+  border-bottom: 0.6rem solid rgba(0, 0, 0, 0.06);
+}
+
+.formulaire-apply {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  font-size: 1.5rem;
+  margin: 0 auto 0 auto;
+}
+
+.submit {
+  grid-column: 1 / span 2;
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+input {
+  background-color: var(--orange);
+  border-radius: 0.5rem;
+  border: none;
+  margin: 0 0 1rem;
+  color: white;
+  height: 4rem;
+  width: 28rem;
+  padding-left: 1rem;
+}
+
+::placeholder {
+  color: white;
+  font-size: 1em;
+} /* modification du placeholder du champ input quand sélectionné pour chaque navigateur  (préfixes vendeurs : moz=firefox / webkit=safari+chrome / ms=microsoft / o=opera) */
+
+input:focus::-moz-placeholder {
+  color: var(--orange);
+  font-size: 1.5rem;
+}
+
+input:focus::-webkit-placeholder {
+  color: var(--orange);
+  font-size: 1.5rem;
+}
+
+input:focus::-ms-placeholder {
+  color: var(--orange);
+  font-size: 1.5rem;
+}
+
+input:focus::-o-placeholder {
+  color: var(--orange);
+  font-size: 1.5rem;
+}
+
+input:focus {
+  background-color: var(--yellow);
+  color: var(--orange);
+  padding-left: 1rem;
+}
+
+button {
+  display: inline-block;
+  background: url("../img/submit_bg.png") no-repeat center center;
+  background-size: contain;
+  height: 10rem;
+  margin: auto;
+  border: none;
+  transition: 1s;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  transform: rotate(-8deg);
+  text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+button:hover {
+  transform: scale(1.5) rotate(0deg);
+  transition: 0.8s;
+}
+
+@media (max-width: 35em) {
+  .formulaire-apply {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+  }
+  .submit {
+    grid-column: 1 / span 2;
+  }
+} /*  application de responsive designs selon tailles écrans */

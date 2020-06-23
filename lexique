@@ -1,0 +1,10 @@
+#obstacle = main
+.home = main
+.grid-obstacles = main div
+.bla = footer section
+.grid-adresses = footer section div:nth-child(2) 
+.grid-title = footer section div:nth-child(2) h2 // footer section div:nth-child(2) h3
+.paragraphe-1 = footer section div:nth-child(2) p:first-child
+.paragraphe-2 = footer section div:nth-child(2) p:last-child
+.address-1 = footer section div:nth-child(2) adress:first-of-type
+.address-2 = footer section div:nth-child(2) adress:nth(2)

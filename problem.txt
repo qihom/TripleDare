@@ -1,0 +1,17 @@
+
+
+
+
+MODIFICATIONS
+20_06_2020 : *CSS/ création en bas de MAIN de selecteur a{} 
+HTML/ ajout des liens haut de page dans OBSTACLE et PRIZES 
+travail sur le formulaire (input{padding)
+
+......................................................................
+
+PB:
+
+>placer le grid et ses contenus
+>gestion des paddings des sections
+>le formulaire
+>@media
